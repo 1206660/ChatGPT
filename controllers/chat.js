@@ -9,19 +9,21 @@ exports.chat = async (req, res) => {
       { _id: req.queryId },
       { $push: { texts: { message: req.body.message, textBy: 1 } } }
     );
-    const { data } = await createCompletionChatGTP({
+    const data = await createCompletionChatGTP({
       message: req.body.message,
     });
+    console.log("data = ", data)
+    content = data.choices[0].message.content
     await Query.updateOne(
       { _id: req.queryId },
       {
         $push: {
-          texts: { message: data.choices[0]?.text, textBy: 0 },
+          texts: { message: content, textBy: 0 },
         },
       }
-    );
+    );    
     res.send({
-      message: data.choices[0]?.text,
+      message: content,
       _id: data.choices[0] ? tempId : undefined,
     });
   } catch (err) {

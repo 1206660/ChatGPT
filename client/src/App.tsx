@@ -54,7 +54,7 @@ export default function App() {
   useEffect(() => {
     if (!auth) return;
     axios
-      .get(`${url}/chatgpt/getchats/${auth.apiKey}`)
+      .get(`http://localhost:8000/chatgpt/getchats/${auth.apiKey}`)
       .then((res) => {
         const processed = res.data.texts.map(
           (item: { message: string; textBy: number; _id: string }) => {

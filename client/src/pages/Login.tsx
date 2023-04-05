@@ -16,7 +16,7 @@ export default function Login({ handleAuth }: AuthPropType) {
   function handleLogin() {
     if (!username || !password) return toast.error("All credentials required");
     axios
-      .post(`${url}/auth/login`, { username, password })
+      .post(`http://localhost:8000/auth/login`, { username, password })
       .then((res) => {
         localStorage.setItem("auth", JSON.stringify(res.data));
         handleAuth(res.data);

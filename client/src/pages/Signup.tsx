@@ -13,13 +13,13 @@ export default function Signup({ handleAuth }: AuthPropType) {
   const navigate = useNavigate();
   function handleSignup() {
     if (!username || !password) return toast.error("All credentials required");
-    axios
-      .post(`${url}/auth/signup`, {
+    axios    
+      .post(`http://localhost:8000/auth/signup`, {
         username,
         password,
         avatar: avatar || undefined,
       })
-      .then((res) => {
+      .then((res) => {       
         localStorage.setItem("auth", JSON.stringify(res.data));
         handleAuth(res.data);
         navigate("/chat");

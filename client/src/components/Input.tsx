@@ -34,7 +34,7 @@ export default function Input({
 
     //apiCall
     axios
-      .post(`${url}/chatgpt/chat/${apiKey}`, { message: input })
+      .post(`http://localhost:8000/chatgpt/chat/${apiKey}`, { message: input })
       .then((resp) => {
         toggleLoading(false);
         addMessage({

@@ -19,6 +19,7 @@
     "generate-api-key": "^1.0.2",
     "mongoose": "^6.8.3",
     "openai": "^3.1.0",
+    "request-promise-native": "^1.0.9",
     "uuid": "^9.0.0"
   }
 }
